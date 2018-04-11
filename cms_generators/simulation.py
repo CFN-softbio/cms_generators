@@ -1,11 +1,25 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 import uuid
-
 import sys, os
+
+import yaml
+
+# configuration
+# location of SciAnalysis
 SciAnalysis_PATH="/home/lhermitte/research/projects/code-profiling/SciAnalysis"
+# location of masks
 mask_dir ="/home/lhermitte/research/projects/code-profiling/masks"
+# place where to save data
 root_dir ="/home/lhermitte/research/projects/code-profiling/data"
+# sample metadata filename
+meta_filename = "sample_meta.yml"
+
+# the Pilatus2M shape
+img_shape = (1679, 1475)
+
+detector_key = "pilatus2M_image"
+
 run_dir = str(uuid.uuid4())[:8]
 SciAnalysis_PATH in sys.path or sys.path.append(SciAnalysis_PATH)
 
@@ -28,9 +42,6 @@ protocol = tools.Protocol()
 protocol.name = 'tag_generated'
 protocol_cal = tools.Protocol()
 protocol_cal.name = 'calibration_generated'
-
-
-
 
 
 # Standard values (e.g. for Eiger 4M)
@@ -120,7 +131,7 @@ def define_experiment(run_id):
     elif True:
         # Conceptual detector (for testing)
         calibration.set_energy(8.8984) # CHX
-        calibration.set_image_size(256, 256)
+        calibration.set_image_size(*img_shape)
         calibration.set_pixel_size(pixel_size_um=75.0)
         calibration.set_distance(4.755/8)
 
@@ -1131,12 +1142,28 @@ def save_data(det_image, run_dir, image_idx_str, tags):
     # Julien : save images as a numpy file
     outfile = '{}/{}.hd5'.format(exp_dir, image_idx_str)
     print("saving hdf5 file to {}".format(outfile))
+
+    meta = yaml.load(open(meta_filename))['attributes']
+    meta.update(tags_cal)
+    meta['uid'] = str(uuid.uuid4())
+    meta['filename'] = outfile
+    meta['detector_name'] = detector_key
+    # choose alias directory to be same as outfile
+    meta['experiment_alias_directory'] = os.path.dirname(outfile)
+    meta['scan_id'] = run_id
+    # dummy number
+    meta['experiment_SAF_numer'] = '99999'
+    meta['sample_name'] = os.path.basename(os.path.dirname(outfile))
+    meta['sample_savename'] = os.path.basename(outfile)
+    meta['time'] = time.time()
+
     #np.savez(outfile, image=det_image, **tags_cal)
     f = h5py.File(outfile)
     #grp = f.create_group('data')
     f.create_dataset(name='img', shape = det_image.shape, data=det_image)
+
     #grp = f.create_group('attributes')
-    for key, val in tags_cal.items():
+    for key, val in meta.items():
         f["/attributes/"+key] = val
     f.close()
 

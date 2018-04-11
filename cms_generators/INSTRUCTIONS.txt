@@ -1,0 +1,7 @@
+1. create a conda environment
+2. conda create -n cms-generator python=3.5 numpy matplotlib h5py scipy ipython lxml pillow
+
+conda activate cms-generator
+conda install -c soft-matter pims
+3. install SciAnalysis: 
+    pip install git+https://www.github.com/CFN-Softbio/SciAnalysis

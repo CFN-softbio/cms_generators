@@ -1,0 +1,29 @@
+attributes:
+  calibration_energy_keV: 13.5
+  calibration_wavelength_A: 0.9184
+  detector_SAXS_distance_m: 5.02
+  detector_SAXS_name: "pilatus2M"
+  detector_SAXS_x0_pix: 719
+  detector_SAXS_y0_pix: 600
+  detector_sequence_ID: 0
+  experiment_cycle: '2018_1'
+  experiment_group: SimulatorJohn
+  experiment_project: Simulations
+  experiment_proposal_number: '99999'
+  experiment_type: SAXS, WAXS
+  experiment_user: SimulatorJohn
+  motor_DETx: 0.0
+  motor_DETy: -35.0
+  motor_SAXSx: -65.0
+  motor_SAXSy: -72.99990636
+  motor_WAXSx: -16.9
+  motor_bsphi: -11.936925000000002
+  motor_bsx: -14.766941999999998
+  motor_bsy: -15.149104999999999
+  motor_smx: 12.361
+  motor_smy: -1.3056
+  motor_sth: 0.0
+  num_intervals: 0
+  num_points: 1
+  stitchback: false
+
