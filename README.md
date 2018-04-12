@@ -1,25 +1,29 @@
 # Install
-
 1. create a conda environment
-2. conda create -n cms-generator python=3.5 numpy matplotlib h5py scipy ipython lxml pillow
-3. conda activate cms-generator
-4. Install extra pims module
-    conda install -c soft-matter pims
-5. install SciAnalysis: 
+2. conda create -n cms-generator2 -c soft-matter pims python=3.5 numpy matplotlib h5py scipy ipython lxml pillow
+
+conda activate cms-generator
+conda install -c soft-matter pims
+3. install SciAnalysis: 
     pip install git+https://www.github.com/CFN-Softbio/SciAnalysis
 
-6. in cms_generators/simluation.py, modify these lines:
-    # location of SciAnalysis
-    SciAnalysis_PATH="/home/lhermitte/research/projects/code-profiling/SciAnalysis"
-    # location of masks
-    mask_dir ="/home/lhermitte/research/projects/code-profiling/masks"
-    # place where to save data
-    root_dir ="/home/lhermitte/research/projects/code-profiling/data"
+4. Clone this repo somewhere:
+    git clone https://www.github.com/CFN-Softbio/cms_generators
+    cd cms_generators/cms_generators
+5. Edit the simulation.py code:
+    - 
+    # the mask directory:
+        - mask_dir ="/home/lhermitte/research/projects/code-profiling/masks"
+    - # place where to save data
+        - root_dir ="/home/lhermitte/research/projects/code-profiling/data"
+    - # sample metadata filename
+        - meta_filename = "sample_meta.yml"
+    You'll probably just need to modify the middle line
+6. Run the simulator:
+    python simulator.py
 
-    to the directories desired
-
-
-# To run the generator
-After installation, To run, in folder with simulation.py run:
-python simulation.py
-
+    This will create data in your root dir. The data is an hdf5 file:
+        img: the image
+        attribures : the metadata attributes
+    The image will be an image with the same dimensions as the Pilatus 2M
+    detector
