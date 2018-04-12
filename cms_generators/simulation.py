@@ -21,7 +21,7 @@ img_shape = (1679, 1475)
 detector_key = "pilatus2M_image"
 
 run_dir = str(uuid.uuid4())[:8]
-SciAnalysis_PATH in sys.path or sys.path.append(SciAnalysis_PATH)
+#SciAnalysis_PATH in sys.path or sys.path.append(SciAnalysis_PATH)
 
 
 import h5py
