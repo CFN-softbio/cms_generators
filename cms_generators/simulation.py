@@ -7,7 +7,7 @@ import yaml
 
 # configuration
 # location of SciAnalysis
-SciAnalysis_PATH="/home/lhermitte/research/projects/code-profiling/SciAnalysis"
+#SciAnalysis_PATH="/home/lhermitte/research/projects/code-profiling/SciAnalysis"
 # location of masks
 mask_dir ="/home/lhermitte/research/projects/code-profiling/masks"
 # place where to save data
