@@ -7,8 +7,6 @@
 
 `conda activate cms-generator`
 
-`conda install -c soft-matter pims`
-
 3. install SciAnalysis: 
 
     `pip install git+https://www.github.com/CFN-Softbio/SciAnalysis`
