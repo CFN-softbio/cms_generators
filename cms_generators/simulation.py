@@ -9,14 +9,14 @@ import yaml
 # location of SciAnalysis
 #SciAnalysis_PATH="/home/lhermitte/research/projects/code-profiling/SciAnalysis"
 # location of masks
-mask_dir ="/home/lhermitte/research/projects/code-profiling/masks"
+mask_dir ="/home/xf11bm/masks"
 # place where to save data
-root_dir ="/home/lhermitte/research/projects/code-profiling/data"
+root_dir ="/home/xf11bm/data"
 # sample metadata filename
 meta_filename = "sample_meta.yml"
 
 # the Pilatus2M shape
-img_shape = (1679, 1475)
+img_shape = (1475, 1679)#(1679, 1475)
 
 detector_key = "pilatus2M_image"
 

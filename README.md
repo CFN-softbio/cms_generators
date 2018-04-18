@@ -29,7 +29,7 @@
     You'll probably just need to modify the middle line
 
 6. Run the simulator:
-    `python simulator.py`
+    `python simulation.py`
 
     This will create data in your root dir. The data is an hdf5 file:
         - img: the image
